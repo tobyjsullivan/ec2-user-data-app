@@ -1,6 +1,9 @@
 #!/bin/sh
 sudo apt-get -y update
-sudo apt-get -y install nginx git default-jre scala unzip
+sudo apt-get -y install nginx git openjdk-7-jdk scala unzip
+
+# Configure Java 7
+sudo update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
 
 # Install sbt
 wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.1/sbt.deb
@@ -13,8 +16,7 @@ sudo chmod +x /opt/play-2.2.1/play
 sudo ln -s /opt/play-2.2.1/play /usr/local/bin/play
 
 # Install and Start Player app
-mkdir -p /usr/local/src
-cd /usr/local/src
-git clone https://github.com/tobyjsullivan/feedme-player.git
-cd ./feedme-player
-sudo play run --http.port=4001
+wget assets.tobyandbryan.com/feedme/feedme-player-1.0.tar.gz
+tar -xzf feedme-player-1.0.tar.gz
+sudo ./start -Dhttp.port=4001
+

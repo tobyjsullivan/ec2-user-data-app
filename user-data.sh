@@ -16,7 +16,8 @@ sudo chmod +x /opt/play-2.2.1/play
 sudo ln -s /opt/play-2.2.1/play /usr/local/bin/play
 
 # Install and Start Player app
+cd ~ubuntu/
 wget assets.tobyandbryan.com/feedme/feedme-player-1.0.tar.gz
 tar -xzf feedme-player-1.0.tar.gz
-sudo ./start -Dhttp.port=4001
+echo "sudo ~ubuntu/start -Dhttp.port=4001" >> /etc/rc.local
 
